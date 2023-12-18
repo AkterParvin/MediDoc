@@ -1,10 +1,13 @@
 import { Outlet } from "react-router-dom";
 
 
+
 const Root = () => {
     return (
-        <div>
+        <div className="bg-bg-light">
+           
             <Outlet/>
+           
         </div>
     );
 };

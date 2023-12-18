@@ -1,5 +1,3 @@
-
-import './App.css'
 import {
   createBrowserRouter,
 
@@ -15,14 +13,14 @@ const App = createBrowserRouter([
         path: "/",
         element:<Home/>,
       },
-      {
-        path: "/",
-        element:<Home/>,
-      },
-      {
-        path: "/",
-        element:<Home/>,
-      },
+      // {
+      //   path: "/",
+      //   element:<Home/>,
+      // },
+      // {
+      //   path: "/",
+      //   element:<Home/>,
+      // },
     ]
   },
 ]);

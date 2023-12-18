@@ -1,9 +1,15 @@
+import SideBar from "../Shared/SideBar/SideBar";
 
 
 const Home = () => {
     return (
-        <div>
-            <h2 className="text-3xl text-center">Home page</h2>
+        <div className="bg-red-700 h-screen w-full flex">
+            <div>
+                <SideBar />
+            </div>
+            <div className="h-screen flex-1 flex-grow  bg-[#F9F9F9]">
+
+            </div>
         </div>
     );
 };
