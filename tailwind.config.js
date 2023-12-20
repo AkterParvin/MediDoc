@@ -14,7 +14,9 @@ export default {
         "dark-green": "rgba(3, 146, 43, 1)",
         "light-green":"rgba(130, 171, 13, 1)",
         "ash": "rgba(138, 134, 134, 1)",
-        "light-ash":"rgba(224, 224, 224, 1)"
+        "light-ash": "rgba(224, 224, 224, 1)",
+        'pink-gradient-start': 'rgba(255, 117, 148, 1)',
+        'pink-gradient-end': 'rgba(255, 124, 101, 1)',
       }
     },
   },
