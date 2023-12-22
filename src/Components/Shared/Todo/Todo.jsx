@@ -1,8 +1,14 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import banner from "../../../assets/Svg_sample1.png";
 import heart from "../../../assets/Icon_Heart.png";
 import bp from "../../../assets/Icon_Blood_pressure.png";
 import sugar from "../../../assets/Icon_Blood_sugar.png";
 import o2 from "../../../assets/Frame 2851.png";
+import bgHeart from "../../../assets/heart-dark.png";
+import bgBp from "../../../assets/bp-dark.png";
+import bgSugar from "../../../assets/dark-sugar.png";
+import bgO2 from "../../../assets/dark-o2.png";
 import { useState } from "react";
 const Todo = ({ theme }) => {
     const [isChecked, setIsChecked] = useState(false);
@@ -30,8 +36,11 @@ const Todo = ({ theme }) => {
             {/* small card  */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[30px] mb-[37px]">
 
-                <div className="max-w-sm w-[157px] h-[157px] p-3 bg-white border-[0.823px]  border-[#EDEBEB] rounded-[6.581px] shadow-md dark:bg-gray-800 dark:border-gray-700">
-                    <img src={heart} alt="" />
+                <div className="max-w-sm w-[157px] h-[157px] p-3 bg-white border-[0.823px]  border-[#EDEBEB] dark:border-text-color rounded-[6.581px] shadow-md dark:bg-light-ash/10 dark:shadow-lg dark:shadow-[rgba(0, 0, 0, 0.20)]">
+                    {
+                        !theme ? < img src={heart} alt="" /> : <img src={bgHeart} alt="" />
+                    }
+                   
                     <a href="#">
                         <h5 className="mb-2 text-[12.339px] font-semibold tracking-normal text-text-color dark:text-white">Pulse Count</h5>
                     </a>
@@ -46,7 +55,9 @@ const Todo = ({ theme }) => {
                     </a>
                 </div>
                 <div className="max-w-sm w-[157px] h-[157px] p-3 bg-white border-[0.823px]  border-[#EDEBEB] rounded-[6.581px] shadow-md dark:bg-gray-800 dark:border-gray-700">
-                    <img src={bp} alt="" />
+                    {
+                        !theme ? < img src={bp} alt="" /> : <img src={bgBp} alt="" />
+                    }
                     <a href="#">
                         <h5 className="mb-2 text-[12.339px] font-semibold tracking-normal text-text-color dark:text-white">Blood Pressure </h5>
                     </a>
@@ -62,7 +73,9 @@ const Todo = ({ theme }) => {
                 </div>
 
                 <div className="max-w-sm w-[157px] h-[157px] p-3 bg-white border-[0.823px]  border-[#EDEBEB] rounded-[6.581px] shadow-md dark:bg-gray-800 dark:border-gray-700">
-                    <img src={o2} alt="" />
+                    {
+                        !theme ? < img src={o2} alt="" /> : <img src={bgO2} alt="" />
+                    }
                     <a href="#">
                         <h5 className="mb-2 text-[12.339px] font-semibold tracking-normal text-text-color dark:text-white">Oxygen Saturation</h5>
                     </a>

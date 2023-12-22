@@ -1,4 +1,4 @@
-import {useState } from "react";
+import { useState } from "react";
 import setting from '../../../assets/Icon_Settings.png';
 import home from '../../../assets/Icon_Home.png';
 import profile from '../../../assets/Icon_Patient Profile.png';
@@ -15,8 +15,8 @@ const SideBar = () => {
     const [open, setOpen] = useState(true);
     const activeLink = 'bg-transparent text-pink  ';
     const normalLink = "text-black";
-   
-   
+
+
 
     return (
 
@@ -29,12 +29,12 @@ const SideBar = () => {
                 onClick={() => setOpen(!open)}>
                 {
                     !open ?
-                        <button className="py-[7px] px-[6px] w-[41px] h-[41px] rounded-[5px] bg-white shadow-md shadow-[rgba(0, 0, 0, 0.20)]">
+                        <span className="py-[7px] px-[6px] w-[41px] h-[41px] rounded-[5px] bg-white shadow-md shadow-[rgba(0, 0, 0, 0.20)]">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 29 28" fill="none" >
                                 <path d="M4 21H25" stroke="#FF7594" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                 <path d="M4 14H25" stroke="#FF7594" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                 <path d="M4 7H25" stroke="#FF7594" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg></button> :
+                            </svg></span> :
                         <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none" >
                             <g filter="url(#filter0_d_1_2435)">
                                 <circle cx="22" cy="20" r="17" fill="white" />
@@ -101,12 +101,12 @@ const SideBar = () => {
 
                     </li>
                 </NavLink>
-                <NavLink to='/appoinment' className={({ isActive }) => isActive ? activeLink : normalLink} >
+                <NavLink to='/dashboard' className={({ isActive }) => isActive ? activeLink : normalLink} >
                     <li className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-text-color text-sm items-center gap-x-4 mb-[40px]">
 
                         <img src={appoinment} />
                         <span className={`${!open && "hidden"} origin-left duration-200`}>
-                            Appoinments
+                            Dashboard
                         </span>
 
 
@@ -134,7 +134,7 @@ const SideBar = () => {
 
                     </li>
                 </NavLink>
-                
+
 
             </ul>
             {
@@ -142,7 +142,7 @@ const SideBar = () => {
                         rounded-[5px] shadow-lg" style={{ background: "linear-gradient(101deg, #FF7594 -6.58%, #FF7C65 102.46%)" }} >New appointment</button> :
                     <img src={svg} />
             }
-      
+
         </div>
     );
 };

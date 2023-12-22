@@ -4,6 +4,9 @@ import {
 } from "react-router-dom";
 import Root from './Components/Root/Root';
 import Home from './Components/Home/Home';
+import Dashboard from "./Components/Dashboard/Dashboard";
+import Login from "./Components/Shared/Login/Login";
+import Register from "./Components/Shared/Register/Register";
 const App = createBrowserRouter([
   {
     path: "/",
@@ -13,14 +16,18 @@ const App = createBrowserRouter([
         path: "/",
         element:<Home/>,
       },
-      // {
-      //   path: "/",
-      //   element:<Home/>,
-      // },
-      // {
-      //   path: "/",
-      //   element:<Home/>,
-      // },
+      {
+        path: "/dashboard",
+        element:<Dashboard/>,
+      },
+      {
+        path: "/login",
+        element:<Login/>,
+      },
+      {
+        path: "/register",
+        element:<Register/>,
+      },
     ]
   },
 ]);
