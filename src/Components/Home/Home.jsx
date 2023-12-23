@@ -29,7 +29,7 @@ const Home = () => {
     return (
         // <div className=" dark:bg-gradient-to-br dark:from-[#150A09] dark:via-[#150A09] dark:to-[#2E1619] bg-bg-light dark:text-  w-full flex ">
         //     <div>
-                
+
         //     </div>
 
         //     <div className="flex flex-col   flex-grow ">
@@ -37,7 +37,7 @@ const Home = () => {
         //             <h2 className="text-[#646F75] text-2xl dark:text-white font-semibold  ml-2">Home</h2>
 
         //             <span className="flex justify-center items-center gap-6">
-                       
+
         //                 <button
         //                     onClick={() => setTheme(!theme)}
         //                     className={`btn bg-white  btn-sm relative w-[83px] h-[40px] border
@@ -74,7 +74,13 @@ const Home = () => {
 
         // </div>
         <div>
-            
+            <>
+                <div className="bg-blue-300">
+                    <Banner></Banner>
+                </div>
+
+
+            </>
         </div>
     );
 };

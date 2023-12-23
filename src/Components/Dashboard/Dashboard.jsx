@@ -3,6 +3,8 @@ import Banner from "../Shared/Banner/Banner";
 import SideBar from "../Shared/SideBar/SideBar";
 import avatar from "../../assets/Avatar.png";
 import { useEffect, useState } from "react";
+import Todo from "../Shared/Todo/Todo";
+import RightPannel from "../Shared/RightPannel/RightPannel";
 // import banner from "../../assets/Svg_sample1.png";
 
 
@@ -55,8 +57,12 @@ const Dashboard = () => {
                 </span>
             </div>
 
-            <div >
-                <Banner theme={theme} />
+            <div className="flex justify-center items-start">
+                {/* <Banner theme={theme} /> */}
+                <Todo theme={theme} />
+
+                {/* Right container */}
+                <RightPannel theme={theme} />
             </div>
        </div>
     );
