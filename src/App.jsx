@@ -7,9 +7,12 @@ import Home from './Components/Home/Home';
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Login from "./Components/Shared/Login/Login";
 import Register from "./Components/Shared/Register/Register";
+import PrivateRoute from "./Components/Root/PrivateRoute";
+import ErrorPage from "./Components/Shared/ErrorPage/ErrorPage";
 const App = createBrowserRouter([
   {
     path: "/",
+    errorElement: <ErrorPage/>,
     element: <Root/>,
     children: [
       {
@@ -18,7 +21,7 @@ const App = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element:<Dashboard/>,
+        element: <Dashboard />,
       },
       {
         path: "/login",
