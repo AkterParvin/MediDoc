@@ -1,60 +1,45 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-import { toast } from "react-toastify";
+import useAxiosPublic from "../AxiosPublic/useAxiosPublic";
+import Swal from "sweetalert2";
 
 
 const AddTask = () => {
-    useEffect(() => {
-        window.document.title = "TaskSpan | Add task";
-    }, []);
+   
     const { user } = useContext(AuthContext);
-
+    const axiosPublic = useAxiosPublic();
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
 
-    const [publishing, setPublishing] = useState(false);
+    const [sending, setSending] = useState(false);
 
     const onSubmit = async (data, e) => {
         e.preventDefault();
-        setPublishing(true);
+        setSending(true);
         const title = data.title;
         const priority = data.priority;
         const date = data.date;
         const des = data.des;
 
-        const Info = {
+        const taskInfo = {
             title,
             email: user?.email,
             priority,
             deadline: date,
             description: des,
         };
-        axios
-            .post(
-                "https://task-management-server-eight-topaz.vercel.app/addTask",
-                Info
-            )
+        axiosPublic.post("/todos", taskInfo)
             .then(() => {
-                setPublishing(false);
+                setSending(false);
                 e.target.reset();
-                toast.success("Successfully Inserted!", {
-                    position: "top-center",
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "colored",
-                });
+                Swal.fire("Task added successfully!");
             })
             .catch(() => {
-                setPublishing(false);
+                setSending(false);
             });
     };
     return (
@@ -200,7 +185,7 @@ const AddTask = () => {
                     <button
                         className={`mt-6  mx-auto flex items-center gap-3 justify-center  rounded-none  bg-transparent text-white hover:text-black hover:bg-white border-white border-2 ease-linear px-4 py-2 duration-300`}
                     >
-                        {publishing ? "loading..." : "Continue"}
+                        {sending ? "loading..." : "Continue"}
                     </button>
                 </form>
             </div>
