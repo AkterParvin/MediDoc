@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState } from "react";
+import { useContext, useState } from "react";
 import setting from '../../../assets/Icon_Settings.png';
 // import home from '../../../assets/Icon_Home.png';
 // import profile from '../../../assets/Icon_Patient Profile.png';
@@ -12,11 +12,15 @@ import { MdArrowBackIosNew } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineDashboard } from "react-icons/md";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { RiLogoutCircleRFill } from "react-icons/ri";
+import { TbLogin } from "react-icons/tb";
 
 const SideBar = () => {
     const [open, setOpen] = useState(true);
     const activeLink = 'bg-transparent text-pink  ';
     const normalLink = "text-black";
+    const { user, logOut } = useContext(AuthContext);
 
     //     return (
 
@@ -57,7 +61,7 @@ const SideBar = () => {
         <div className="h-screen">
             <div className={` ${open ? "lg:w-[220px] w-[150px]" : "lg:w-[70px] "
                 }   p-4 lg:p-7  pt-8 relative transition-all duration-700`} onClick={() => setOpen(!open)}>
-                
+
                 <button className={`absolute cursor-pointer   w-8 transition-all duration-700
             rounded-full  ${open ? "rotate-180 transition-all duration-700 top-6 md:-right-4 md:top-9 -right-[10%] z-50" : "rotate-180 transition-all duration-700 md:right-4 md:top-9  top-6 left-6 "}`}>
                     {
@@ -154,55 +158,88 @@ const SideBar = () => {
                         Upto<span className="text-[#FF7594]">Date</span>
                     </h1>
                 </div>
-                <ul className="pt-8 ">
+                {
+                    open ?
+                        <ul className="pt-8 ">
 
 
-                    <NavLink to='/' className={({ isActive }) => isActive ? activeLink : normalLink} >
-                        <li className="flex  rounded-md  cursor-pointer hover:bg-gray-200 text-text-color text-sm items-center gap-x-1 mb-5">
+                        <NavLink to='/' className={({ isActive }) => isActive ? activeLink : normalLink} >
+                            <li className="flex  rounded-md  cursor-pointer hover:bg-gray-200 text-text-color text-sm items-center gap-x-1 mb-5">
 
-                            <FaHome className="text-pink text-2xl" />
+                                <FaHome className="text-pink text-2xl" />
 
-                            <span className={`${!open && "hidden"} origin-left duration-200`}>
-                                Home
-                            </span>
-
-
-                        </li>
-                    </NavLink>
-                    <NavLink to='/profile' className={({ isActive }) => isActive ? activeLink : normalLink} >
-                        <li className="flex  rounded-md  cursor-pointer hover:bg-light-white text-text-color text-sm items-center gap-x-1 mb-5">
-
-                            {/* <img src={profile} /> */}
-
-                            <CgProfile className="text-pink text-2xl" />
-                            <span className={`${!open && "hidden"} origin-left duration-200`}>
-                                Profile
-                            </span>
+                                <span className={`${!open && "hidden"} origin-left duration-200`}>
+                                    Home
+                                </span>
 
 
-                        </li>
-                    </NavLink>
-                    <NavLink to='/dashboard' className={({ isActive }) => isActive ? activeLink : normalLink} >
-                        <li className="flex  rounded-md  cursor-pointer hover:bg-light-white text-text-color text-sm items-center gap-x-1 mb-5">
+                            </li>
+                        </NavLink>
+                        <NavLink to='/profile' className={({ isActive }) => isActive ? activeLink : normalLink} >
+                            <li className="flex  rounded-md  cursor-pointer hover:bg-light-white text-text-color text-sm items-center gap-x-1 mb-5">
 
-                            {/* <img src={profile} /> */}
+                                {/* <img src={profile} /> */}
 
-                            <MdOutlineDashboard className="text-pink text-2xl" />
-                            <span className={`${!open && "hidden"} origin-left duration-200`}>
-                                Dashboard
-                            </span>
-
-
-                        </li>
-                    </NavLink>
+                                <CgProfile className="text-pink text-2xl" />
+                                <span className={`${!open && "hidden"} origin-left duration-200`}>
+                                    Profile
+                                </span>
 
 
+                            </li>
+                        </NavLink>
+                        <NavLink to='/dashboard' className={({ isActive }) => isActive ? activeLink : normalLink} >
+                            <li className="flex  rounded-md  cursor-pointer hover:bg-light-white text-text-color text-sm items-center gap-x-1 mb-5">
 
-                </ul>
+                                {/* <img src={profile} /> */}
+
+                                <MdOutlineDashboard className="text-pink text-2xl" />
+                                <span className={`${!open && "hidden"} origin-left duration-200`}>
+                                    Dashboard
+                                </span>
+
+
+                            </li>
+                        </NavLink>
+                        {
+                            user ? <><button onClick={logOut} className={({ isActive }) => isActive ? activeLink : normalLink} >
+                                <li className="flex  rounded-md  cursor-pointer hover:bg-light-white text-text-color text-sm items-center gap-x-1 mb-5">
+
+                                    {/* <img src={profile} /> */}
+
+                                    <RiLogoutCircleRFill className="text-pink text-2xl" />
+                                    <span className={`${!open && "hidden"} origin-left duration-200`}>
+                                        LogOut
+                                    </span>
+
+
+                                </li>
+                            </button></> :
+                                <> <NavLink to='/login' className={({ isActive }) => isActive ? activeLink : normalLink} >
+                                    <li className="flex  rounded-md  cursor-pointer hover:bg-light-white text-text-color text-sm items-center gap-x-1 mb-5">
+
+                                        {/* <img src={profile} /> */}
+
+                                        <TbLogin className="text-pink text-2xl" />
+
+                                        <span className={`${!open && "hidden"} origin-left duration-200`}>
+                                            Login
+                                        </span>
+
+
+                                    </li>
+                                </NavLink></>
+                        }
+
+
+
+                    </ul>: <></>
+                }
+               
                 {
                     open ? <button className="text-xs font-medium text-white  p-3 
                         rounded-[5px] shadow-lg" style={{ background: "linear-gradient(101deg, #FF7594 -6.58%, #FF7C65 102.46%)" }} >New appointment</button> :
-                        <img src={svg} />
+                        <></>
                 }
 
             </div>

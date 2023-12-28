@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {
   createBrowserRouter,
 
@@ -9,6 +10,7 @@ import Login from "./Components/Shared/Login/Login";
 import Register from "./Components/Shared/Register/Register";
 import PrivateRoute from "./Components/Root/PrivateRoute";
 import ErrorPage from "./Components/Shared/ErrorPage/ErrorPage";
+import AddTask from "./Components/Shared/AddTask/AddTask";
 const App = createBrowserRouter([
   {
     path: "/",
@@ -22,6 +24,10 @@ const App = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "/addTask",
+        element: <AddTask />,
       },
       {
         path: "/login",

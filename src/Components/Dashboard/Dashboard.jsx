@@ -2,9 +2,10 @@
 import Banner from "../Shared/Banner/Banner";
 import SideBar from "../Shared/SideBar/SideBar";
 import avatar from "../../assets/Avatar.png";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Todo from "../Shared/Todo/Todo";
 import RightPannel from "../Shared/RightPannel/RightPannel";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 // import banner from "../../assets/Svg_sample1.png";
 
 
@@ -21,10 +22,12 @@ const Dashboard = () => {
         }
 
     }, [theme])
+
+    const { user } = useContext(AuthContext);
     return (
         <div>
             <div className="flex justify-between items-start w-full p-5 h-12 mb-6">
-                <h2 className="text-[#646F75] text-2xl dark:text-white font-semibold  ml-2">Home</h2>
+                <h2 className="text-[#646F75] text-2xl dark:text-white font-semibold  ml-2">Dashboard</h2>
 
                 <span className="flex justify-center items-center gap-6">
 
@@ -53,7 +56,11 @@ const Dashboard = () => {
                                 </svg>
                             </span>}
                     </button>
-                    <img src={avatar} alt="profile pic" className="" />
+                    <div className="avatar">
+                        <div className="w-12 rounded-full">
+                            <img src={user?.photoURL} />
+                        </div>
+                    </div>
                 </span>
             </div>
 
